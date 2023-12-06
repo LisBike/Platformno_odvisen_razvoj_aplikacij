@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="station_types">
+        <item>Bike Station-Start</item>
+        <item>Bike Station-Destination</item>
+    </string-array>
+</resources>
