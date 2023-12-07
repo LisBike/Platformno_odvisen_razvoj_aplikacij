@@ -59,7 +59,10 @@ class ItemAdapter(private var mList: List<DataModel>, private val navController:
         when (nestedItem) {
             "Input" -> {
                 // Open ImageInputFragment
-
+                navController.navigate(R.id.action_homeFragment_to_imageInputFragment)
+            }
+            "State" -> {
+                navController.navigate(R.id.action_homeFragment_to_accelerometerStateFragment)
             }
         }
     }
