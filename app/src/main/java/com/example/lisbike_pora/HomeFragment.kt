@@ -1,11 +1,10 @@
 package com.example.lisbike_pora
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lisbike_pora.databinding.FragmentHomeBinding
@@ -26,6 +25,7 @@ class HomeFragment : Fragment() {
     private var param2: String? = null
 
     private lateinit var binding: FragmentHomeBinding
+    private var isRecyclerViewInitialized = false
     private val mList: MutableList<DataModel> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,19 +50,23 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.mainRecyclerview.layoutManager = LinearLayoutManager(context)
 
-        val nestedList1: MutableList<String> = ArrayList()
-        nestedList1.add("Input")
-        nestedList1.add("Simulation")
+        if (!isRecyclerViewInitialized) {
+            val nestedList1: MutableList<String> = ArrayList()
+            nestedList1.add("Input")
+            nestedList1.add("Simulation")
 
-        val nestedList2: MutableList<String> = ArrayList()
-        nestedList2.add("State")
-        nestedList2.add("Simulation ")
+            val nestedList2: MutableList<String> = ArrayList()
+            nestedList2.add("State")
+            nestedList2.add("Simulation ")
 
-        mList.add(DataModel(nestedList1, "Image"))
-        mList.add(DataModel(nestedList2, "Accelerometer"))
+            mList.add(DataModel(nestedList1, "Image"))
+            mList.add(DataModel(nestedList2, "Accelerometer"))
+            isRecyclerViewInitialized = true
+        }
 
-        var adapter = ItemAdapter(mList, findNavController())
-        binding.mainRecyclerview.adapter = adapter
+            var adapter = ItemAdapter(mList, findNavController())
+            binding.mainRecyclerview.adapter = adapter
+
 
         binding.btnEvent.setOnClickListener {
 

@@ -34,11 +34,14 @@
                 app:tint="#FFFFFF" />
 
             <TextView
-                android:id="@+id/txtViewAcc"
+                android:id="@+id/txtViewUrl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
                 android:text="TextView"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +59,7 @@
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtViewAcc" />
+                app:layout_constraintTop_toBottomOf="@+id/txtViewUrl" />
 
             <TextView
                 android:id="@+id/txtViewLocation"
@@ -66,6 +69,7 @@
                 android:hint="Location"
                 android:text="Location"
                 android:textAlignment="center"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +82,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:text="TextView"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +97,7 @@
                 android:layout_marginEnd="10dp"
                 app:layout_constraintEnd_toStartOf="@+id/buttonLocation"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtViewAcc"
+                app:layout_constraintTop_toBottomOf="@+id/txtViewUrl"
                 mapbox:srcCompat="@drawable/icons8_place_marker_50"
                 app:tint="#FFFFFF" />
 
