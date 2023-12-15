@@ -14,6 +14,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.lisbike_pora.databinding.FragmentAccelerometerStateBinding
+import com.example.lisbike_pora.services.APIUtil
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,6 +41,7 @@ class AccelerometerStateFragment : Fragment() {
 
     var currentTime: Date = Calendar.getInstance().getTime()
     var df: SimpleDateFormat = SimpleDateFormat("dd-MMM-yyyy hh:mm:ss", Locale.getDefault())
+    var accDataString = ""
 
     private var latitude: String? = "0"
     private var longitude: String? = "0"
@@ -83,6 +86,10 @@ class AccelerometerStateFragment : Fragment() {
 
             }
         }
+        binding.btnSave.setOnClickListener {
+            APIUtil.uploadData(accDataString, APIUtil.BASE_URL + "image", latitude!!, longitude!!, formattedDate, APIUtil.MIME_TEXT)
+            Toast.makeText(requireActivity(), "Image uploading..", Toast.LENGTH_SHORT).show()
+        }
 
     }
     private fun registerAccelerometerSensor() {
@@ -94,6 +101,7 @@ class AccelerometerStateFragment : Fragment() {
                         val y = event.values[1]
                         val z = event.values[2]
                         binding.txtViewAcc.text = "X: $x \n Y: $y \n Z: $z"
+                        accDataString = "X: $x \\n Y: $y \\n Z: $z"
                     }
                 }
 
