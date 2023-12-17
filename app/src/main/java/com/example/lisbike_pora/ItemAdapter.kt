@@ -67,6 +67,9 @@ class ItemAdapter(private var mList: List<DataModel>, private val navController:
             "Simulation" -> {
                 navController.navigate(R.id.action_homeFragment_to_imageSimulationFragment)
             }
+            "Simulation " -> {
+                navController.navigate(R.id.action_homeFragment_to_accelerometerSimulationFragment)
+            }
         }
     }
 

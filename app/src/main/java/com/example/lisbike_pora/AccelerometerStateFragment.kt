@@ -88,7 +88,7 @@ class AccelerometerStateFragment : Fragment() {
         }
         binding.btnSave.setOnClickListener {
             APIUtil.uploadData(accDataString, APIUtil.BASE_URL + "image", latitude!!, longitude!!, formattedDate, APIUtil.MIME_TEXT)
-            Toast.makeText(requireActivity(), "Image uploading..", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), "Data uploading..", Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -101,7 +101,7 @@ class AccelerometerStateFragment : Fragment() {
                         val y = event.values[1]
                         val z = event.values[2]
                         binding.txtViewAcc.text = "X: $x \n Y: $y \n Z: $z"
-                        accDataString = "X: $x \\n Y: $y \\n Z: $z"
+                        accDataString = "X: $x  Y: $y   Z: $z"
                     }
                 }
 

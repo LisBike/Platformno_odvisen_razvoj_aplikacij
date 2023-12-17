@@ -68,7 +68,7 @@ object APIUtil {
             }
         }.start()
     }
-    val BASE_URL = "http://164.8.200.230:3000/net/"
+    val BASE_URL = "http://164.8.200.193:3000/net/"
     val MIME_JPEG = "image/jpeg".toMediaType()
     val MIME_TEXT = "text/plain".toMediaType()
     val MIME_JSON = "application/json".toMediaType()
