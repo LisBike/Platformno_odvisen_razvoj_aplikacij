@@ -33,7 +33,7 @@ object APIUtil {
         val cleanBase64 = base64.replace("\\s".toRegex(), "")
         val mode: String = mime.toString()
 
-        val data = """{"mode":"$mode","lat":"$lat","lng":"$lng","time:":"$time","file":"$cleanBase64"}""".toRequestBody(MIME_JSON)
+        val data = """{"mode":"$mode","lat":"$lat","lng":"$lng","time:":"$time","data":"$cleanBase64"}""".toRequestBody(MIME_JSON)
         val request = Request.Builder()
             .url(url)
             .post(data)
@@ -52,7 +52,7 @@ object APIUtil {
     fun uploadData(state:String, url: String, lat: String, lng: String, time:String, mime: MediaType) {
         val mode: String = mime.toString()
 
-        val data = """{"mode":"$mode","lat":"$lat","lng":"$lng","time:":"$time","file":"$state"}""".toRequestBody(MIME_JSON)
+        val data = """{"mode":"$mode","lat":"$lat","lng":"$lng","time:":"$time","data":"$state"}""".toRequestBody(MIME_JSON)
         val request = Request.Builder()
             .url(url)
             .post(data)
@@ -68,7 +68,24 @@ object APIUtil {
             }
         }.start()
     }
-    val BASE_URL = "http://164.8.200.193:3000/net/"
+    fun uploadSimulation(state:String, url: String, lat: String, lng: String) {
+        val data = """{"lat":"$lat","lng":"$lng","data":"$state"}""".toRequestBody(MIME_JSON)
+        val request = Request.Builder()
+            .url(url)
+            .post(data)
+            .build()
+        Thread {
+            try {
+                client.newCall(request).execute().use { response ->
+                    if (!response.isSuccessful) throw IOException("Unexpected code $response")
+                    Log.d("Accelerometer",response.body!!.string())
+                }
+            } catch (e: Exception) {
+                Log.d("APIUtil-File", "Error when sending file:\n$e")
+            }
+        }.start()
+    }
+    val BASE_URL = "http://164.8.200.22:3000/net/"
     val MIME_JPEG = "image/jpeg".toMediaType()
     val MIME_TEXT = "text/plain".toMediaType()
     val MIME_JSON = "application/json".toMediaType()

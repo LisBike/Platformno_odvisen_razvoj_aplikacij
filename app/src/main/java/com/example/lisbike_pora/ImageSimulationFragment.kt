@@ -54,11 +54,19 @@ class ImageSimulationFragment : Fragment() {
 
         binding.switchSimulation.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked) {
-                val serviceIntent = Intent(requireActivity(), ImageService::class.java)
-                serviceIntent.putExtra("interval", binding.editTextTime.text.toString().toLong())
-                serviceIntent.action = ImageService.ACTION_START_RECORDING
-                requireActivity().startService(serviceIntent)
-                Toast.makeText(requireActivity(), "Service started!", Toast.LENGTH_SHORT).show()
+                val intervalValue = binding.editTextTime.text.toString().toLongOrNull()
+
+                if (intervalValue == null) {
+                    Toast.makeText(requireActivity(), "Please fill in all required fields", Toast.LENGTH_SHORT).show()
+                } else {
+                    val serviceIntent = Intent(requireActivity(), ImageService::class.java)
+                    serviceIntent.putExtra("interval", intervalValue)
+                    serviceIntent.putExtra("latitude", latitude)
+                    serviceIntent.putExtra("longitude", longitude)
+                    serviceIntent.action = ImageService.ACTION_START_RECORDING
+                    requireActivity().startService(serviceIntent)
+                    Toast.makeText(requireActivity(), "Service started!", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 val stopRecordingIntent = Intent(requireActivity(), ImageService::class.java)
                 stopRecordingIntent.action = ImageService.ACTION_STOP_RECORDING

@@ -143,12 +143,12 @@
                 android:text="to"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/editTextNumber2"
-                app:layout_constraintStart_toEndOf="@+id/editTextNumber2"
-                app:layout_constraintTop_toTopOf="@+id/editTextNumber2" />
+                app:layout_constraintBottom_toBottomOf="@+id/editTextNumberFrom"
+                app:layout_constraintStart_toEndOf="@+id/editTextNumberFrom"
+                app:layout_constraintTop_toTopOf="@+id/editTextNumberFrom" />
 
             <EditText
-                android:id="@+id/editTextNumber"
+                android:id="@+id/editTextNumberTo"
                 android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -162,7 +162,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textView3" />
 
             <EditText
-                android:id="@+id/editTextNumber2"
+                android:id="@+id/editTextNumberFrom"
                 android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -177,27 +177,17 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/primaryColor"
-            android:text="SAVE"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutInput" />
-
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="30dp"
-            android:fontFamily="@font/kapal"
+            android:fontFamily="@font/crony"
+            android:letterSpacing="0.1"
             android:text="SIMULATION"
             android:textColor="@color/black"
-            android:textSize="34sp"
+            android:textSize="48sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayoutInput"
             app:layout_constraintEnd_toEndOf="parent"

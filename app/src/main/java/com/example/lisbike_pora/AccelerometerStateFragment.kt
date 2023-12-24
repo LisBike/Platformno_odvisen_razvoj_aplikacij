@@ -87,7 +87,7 @@ class AccelerometerStateFragment : Fragment() {
             }
         }
         binding.btnSave.setOnClickListener {
-            APIUtil.uploadData(accDataString, APIUtil.BASE_URL + "image", latitude!!, longitude!!, formattedDate, APIUtil.MIME_TEXT)
+            APIUtil.uploadData(accDataString, APIUtil.BASE_URL + "sensor", latitude!!, longitude!!, formattedDate, APIUtil.MIME_TEXT)
             Toast.makeText(requireActivity(), "Data uploading..", Toast.LENGTH_SHORT).show()
         }
 

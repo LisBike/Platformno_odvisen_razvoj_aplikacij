@@ -83,7 +83,7 @@ class ImageInputFragment : Fragment() {
 //
 //        }
         binding.btnSave.setOnClickListener {
-            APIUtil.uploadStream(image_url!!, APIUtil.BASE_URL + "image", latitude!!, longitude!!, formattedDate, APIUtil.MIME_JPEG, requireActivity())
+            APIUtil.uploadStream(image_url!!, APIUtil.BASE_URL + "sensor", latitude!!, longitude!!, formattedDate, APIUtil.MIME_JPEG, requireActivity())
             Toast.makeText(requireActivity(), "Image uploading..", Toast.LENGTH_SHORT).show()
             Log.d("ImageInputFragment", "Image uploading..")
         }

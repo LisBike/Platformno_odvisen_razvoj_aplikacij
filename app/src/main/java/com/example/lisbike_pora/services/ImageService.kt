@@ -118,7 +118,7 @@ class ImageService : Service(), LifecycleOwner {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     Log.d("Saved Image", "Image was successfully saved to ${imageFile.absolutePath}")
                     // Send the image file to the API
-                    APIUtil.uploadStream(Uri.fromFile(imageFile), APIUtil.BASE_URL + "image", "0", "0", "0", APIUtil.MIME_JPEG, baseContext)
+                    APIUtil.uploadStream(Uri.fromFile(imageFile), APIUtil.BASE_URL + "sensor", "0", "0", "0", APIUtil.MIME_JPEG, baseContext)
                 }
 
                 override fun onError(
