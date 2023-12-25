@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeFragment_to_accelerometerSimulationFragment"
             app:destination="@id/accelerometerSimulationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
     </fragment>
     <fragment
         android:id="@+id/imageInputFragment"
@@ -57,6 +60,15 @@
         tools:layout="@layout/fragment_accelerometer_simulation" >
         <action
             android:id="@+id/action_accelerometerSimulationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.lisbike_pora.EventFragment"
+        android:label="fragment_event"
+        tools:layout="@layout/fragment_event" >
+        <action
+            android:id="@+id/action_eventFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

@@ -1,14 +1,13 @@
 package com.example.lisbike_pora
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.lisbike_pora.databinding.FragmentHomeBinding
+import com.example.lisbike_pora.databinding.FragmentEventBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,17 +16,20 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
+ * Use the [EventFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
+class EventFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var binding: FragmentHomeBinding
-    private var isRecyclerViewInitialized = false
-    private val mList: MutableList<DataModel> = mutableListOf()
+    private lateinit var binding: FragmentEventBinding
+    var currentTime: Date = Calendar.getInstance().getTime()
+    var df: SimpleDateFormat = SimpleDateFormat("dd-MMM-yyyy hh:mm:ss", Locale.getDefault())
+
+    private var latitude: String? = "0"
+    private var longitude: String? = "0"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,36 +44,14 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        // return inflater.inflate(R.layout.fragment_home, container, false)
-        binding = FragmentHomeBinding.inflate(inflater,container,false)
+        // return inflater.inflate(R.layout.fragment_event, container, false)
+        binding = FragmentEventBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.mainRecyclerview.layoutManager = LinearLayoutManager(context)
 
-        if (!isRecyclerViewInitialized) {
-            val nestedList1: MutableList<String> = ArrayList()
-            nestedList1.add("Input")
-            nestedList1.add("Simulation")
-
-            val nestedList2: MutableList<String> = ArrayList()
-            nestedList2.add("State")
-            nestedList2.add("Simulation ")
-
-            mList.add(DataModel(nestedList1, "Image"))
-            mList.add(DataModel(nestedList2, "Accelerometer"))
-            isRecyclerViewInitialized = true
-        }
-
-            var adapter = ItemAdapter(mList, findNavController())
-            binding.mainRecyclerview.adapter = adapter
-
-
-        binding.btnEvent.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_eventFragment)
-        }
     }
 
     companion object {
@@ -81,12 +61,12 @@ class HomeFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
+         * @return A new instance of fragment EventFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
+            EventFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
