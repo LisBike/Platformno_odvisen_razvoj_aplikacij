@@ -1,13 +1,15 @@
 package com.example.lisbike_pora
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import androidx.fragment.app.Fragment
 import com.example.lisbike_pora.databinding.FragmentEventBinding
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,6 +54,16 @@ class EventFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val spinner = binding.spinnerStationType
+
+        val adapter = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.station_types,
+            R.layout.spinner_item
+        )
+
+        adapter.setDropDownViewResource(R.layout.dropdown_list)
+        spinner.adapter = adapter
     }
 
     companion object {
