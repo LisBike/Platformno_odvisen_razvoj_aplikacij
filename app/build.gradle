@@ -55,5 +55,10 @@ dependencies {
     implementation "androidx.camera:camera-view:1.4.0-alpha02"
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.4'
     implementation 'com.github.hannesa2:paho.mqtt.android:3.3.5'
+    implementation ('com.mapbox.mapboxsdk:mapbox-android-sdk:6.8.1') {
+        exclude group: 'group_name', module: 'module_name'
+    }
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:0.5.0'
 
 }
